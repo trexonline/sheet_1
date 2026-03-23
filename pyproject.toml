@@ -1,0 +1,26 @@
+[project]
+name = "sheet-1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Paul", email = "paul.seyffer@outlook.de" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.2.0",
+    "numpy>=2.4.3",
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.7",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "B"]
+ignore = ["E501"]
