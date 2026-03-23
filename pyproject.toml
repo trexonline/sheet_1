@@ -12,6 +12,7 @@ dependencies = [
     "numpy>=2.4.3",
     "pre-commit>=4.5.1",
     "ruff>=0.15.7",
+    "ty",
 ]
 
 [build-system]
@@ -24,3 +25,12 @@ line-length = 88
 [tool.ruff.lint]
 select = ["E", "F", "B"]
 ignore = ["E501"]
+
+
+[tool.ty]
+
+[tool.ty.rules]
+unused-ignore-comment = "warn"
+redundant-cast = "ignore"
+possibly-missing-attribute = "error"
+possibly-missing-import = "error"

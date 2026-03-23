@@ -5,3 +5,11 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+repos:
+  - repo: local
+    hooks:
+      - id: ty-check
+        name: Ty Type Check
+        entry: uvx ty check
+        language: system  # uses the system Python environment
+        types: [python]
