@@ -1,0 +1,1 @@
+Paul Seyffer, Simulation von Quantenschaltungen auf GPUs
