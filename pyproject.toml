@@ -39,3 +39,8 @@ unused-ignore-comment = "warn"
 redundant-cast = "ignore"
 possibly-missing-attribute = "error"
 possibly-missing-import = "error"
+
+[dependency-groups]
+dev = [
+    "sphinx>=9.1.0",
+]
