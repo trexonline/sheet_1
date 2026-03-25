@@ -1,3 +1,5 @@
+import sheet_1
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -14,7 +16,7 @@ release = '28.03.2026'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = ['sphinx.ext.autosummary']
 
 templates_path = ['_templates']
 exclude_patterns = []
