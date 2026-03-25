@@ -35,7 +35,7 @@ def simulate(qc, parameters):
 
             
 
-# initialize state
+'''# initialize state
 number_of_qubits=4
 qc = QuantumCircuit(number_of_qubits)
 qc.h(0)
@@ -54,7 +54,7 @@ parameters= {
 
 result = simulate(transpiled_qc, parameters)
 
-print(result)
+print(result)'''
 
 
 
