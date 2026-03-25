@@ -4,13 +4,17 @@ from qiskit_aer import AerSimulator
 from qiskit.quantum_info import Statevector
 import numpy as np
 
-from sheet_1 import quantum_simulator
+from sheet_1 import apply_u_on_state
 
 print()
 print('testing')
 
+theta = np.pi/3
+phi=np.pi/8
+lam=0
+
 # initialize state
-number_of_qubits=3
+number_of_qubits=4
 qc = QuantumCircuit(number_of_qubits)
 qc.x(0)
 '''
@@ -24,7 +28,7 @@ initial_state = Statevector.from_instruction(qc)
 
 # simulate result using AerSimulator
 qc2 = QuantumCircuit(number_of_qubits)
-qc2.cx(2,0)
+qc2.u(theta,phi,lam,2)
 Aer_result = initial_state.evolve(qc2)
 
 print()
@@ -33,17 +37,15 @@ print()
 print(Aer_result.data)
 
 # set up cx gate
-cx_gate = CXGate()        # Instanz erzeugen
-cx_matrix = cx_gate.to_matrix()  # ruft die Matrix auf
-cx = np.reshape(cx_matrix,(2,2,2,2))
+u=UGate(theta,phi,lam).to_matrix()
 
 initial_state_converted = np.reshape(initial_state.data,[2]*number_of_qubits)
+result = apply_u_on_state.apply_u_on_state(initial_state_converted, u, 2)
+result_reshaped = np.reshape(result,(2**number_of_qubits))
 
-
-result = quantum_simulator.apply_cx_on_state(initial_state_converted, cx, 2, 0)
 print()
-print(np.reshape(result,(2**number_of_qubits)))
+print(result_reshaped)
 
 global_phase=1
 
-assert np.allclose(Aer_result, result*global_phase, tol=1e-12)
+assert np.allclose(Aer_result.data, result_reshaped*global_phase, atol=1e-12)

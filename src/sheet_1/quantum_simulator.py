@@ -58,7 +58,6 @@ for idx, value in np.ndenumerate(psi_converted):
 
 u=UGate(np.pi/4,0,0).to_matrix()
 
-
 cx_gate = CXGate()        # Instanz erzeugen
 cx_matrix = cx_gate.to_matrix()  # ruft die Matrix auf
 

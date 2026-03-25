@@ -31,14 +31,16 @@ for gate in qc.data:
     acting_on=[qc.find_bit(q).index for q in gate.qubits]
 
 
-def vector_to_tensor(psi, number_of_qubits):
-    return psi.reshape([2]*number_of_qubits).transpose(list(reversed(range(number_of_qubits))))
+#def vector_to_tensor(psi, number_of_qubits):
+ #   return psi.reshape([2]*number_of_qubits).transpose(list(reversed(range(number_of_qubits))))
 
-def tensor_to_vector(tensor, number_of_qubits):
-    return tensor.transpose(list(reversed(range(number_of_qubits)))).reshape(2**number_of_qubits)
+#def tensor_to_vector(tensor, number_of_qubits):
+ #   return tensor.transpose(list(reversed(range(number_of_qubits)))).reshape(2**number_of_qubits)
 
 def apply_u_on_state(state: np.ndarray, u: np.ndarray, acting_on: int) -> None:
     number_of_qubits=state.ndim
+    acting_on=number_of_qubits-acting_on-1
+    print(acting_on)
     old_indices = [i for i in range(number_of_qubits)]
     new_indices = old_indices.copy()
     new_indices[acting_on] = 51
