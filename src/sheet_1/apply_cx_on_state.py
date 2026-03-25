@@ -1,38 +1,9 @@
-from qiskit import QuantumCircuit, transpile
-from qiskit.circuit.library import QFTGate, UGate, CXGate
-from qiskit_aer import AerSimulator
 import numpy as np
 
-
-def simulate_mock(qc, parameters):
-    simulator = AerSimulator()
-    job = simulator.run(qc, shots=parameters["shots"],seed_simulator=parameters["seed"])
-    result = job.result()
-    counts = result.get_counts()
-    return counts
-
-def simulate(qc, parameters):
-    for instr, qargs, cargs in qc.data:
-        qubit_indices = [qc.find_bit(q).index for q in qargs]
-
-        #if instr.name == 'cx':
-
-
-
-
-
-qc = QuantumCircuit(4)
-
-
-
-#--------------------------------------------------------
-
-
-for gate in qc.data:
-    acting_on=[qc.find_bit(q).index for q in gate.qubits]
-
-
 def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting_on2: int) -> None:
+    '''Applies a CNOT gate to the given state vector. The CNOT gate is defined 
+    by the 4x4 matrix cx, and it acts on the qubits specified by acting_on1 (control) 
+    and acting_on2 (target). The state vector is modified in-place.'''
     number_of_qubits=state.ndim
     acting_on1=number_of_qubits-1-acting_on1
     acting_on2=number_of_qubits-1-acting_on2
@@ -42,11 +13,5 @@ def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting
     new_indices = old_indices.copy()
     new_indices[acting_on1] = 51
     new_indices[acting_on2] = 50
-    result=np.einsum(cx,[51,50,acting_on1,acting_on2],state,old_indices,new_indices) #müsste state nehmen, funktion mit state definiert
+    result=np.einsum(cx,[51,50,acting_on1,acting_on2],state,old_indices,new_indices)
     return result
-
-
-
-
-
-#result=apply_cx_on_state(psi_converted, cx, 2, 0) 

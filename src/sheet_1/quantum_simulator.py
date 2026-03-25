@@ -7,7 +7,8 @@ from qiskit.quantum_info import Statevector
 
 
 
-def simulate(qc, parameters):
+def simulate(qc: QuantumCircuit, parameters: dict) -> np.ndarray:
+    """Simulates the given quantum circuit and returns the final state vector."""
     number_of_qubits=qc.num_qubits
     psi=np.zeros(2**number_of_qubits)
     psi[0]=1
