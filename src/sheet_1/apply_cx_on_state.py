@@ -32,9 +32,6 @@ qc = QuantumCircuit(4)
 #--------------------------------------------------------
 
 
-def map_qubits(number_of_qubits, q):
-    return number_of_qubits-1-q
-
 for gate in qc.data:
     acting_on=[qc.find_bit(q).index for q in gate.qubits]
 
