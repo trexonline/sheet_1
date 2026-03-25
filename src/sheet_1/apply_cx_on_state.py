@@ -1,6 +1,6 @@
 import numpy as np
 
-def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting_on2: int) -> None:
+def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting_on2: int) -> np.ndarray:
     '''Applies a CNOT gate to the given state vector. The CNOT gate is defined 
     by the 4x4 matrix cx, and it acts on the qubits specified by acting_on1 (control) 
     and acting_on2 (target). The state vector is modified in-place.'''

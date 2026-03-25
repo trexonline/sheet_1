@@ -1,6 +1,6 @@
 import numpy as np
 
-def apply_u_on_state(state: np.ndarray, u: np.ndarray, acting_on: int) -> None:
+def apply_u_on_state(state: np.ndarray, u: np.ndarray, acting_on: int) -> np.ndarray:
     """Applies a single-qubit gate to the given state vector. The gate is defined 
     by the 2x2 matrix u, and it acts on the qubit specified by acting_on"""
     number_of_qubits=state.ndim

@@ -34,7 +34,7 @@ u=UGate(theta,phi,lam).to_matrix()
 
 initial_state_converted = np.reshape(initial_state.data,[2]*number_of_qubits)
 result = apply_u_on_state(initial_state_converted, u, 2)
-result_reshaped = np.reshape(result,(2**number_of_qubits))
+result_reshaped = np.reshape(np.asarray(result), (2**number_of_qubits,))
 
 global_phase=1
 

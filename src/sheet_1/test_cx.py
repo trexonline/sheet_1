@@ -33,7 +33,7 @@ cx = np.reshape(cx_matrix,(2,2,2,2))
 
 initial_state_converted = np.reshape(initial_state.data,[2]*number_of_qubits)
 result = apply_cx_on_state(initial_state_converted, cx, qbit1,qbit2)
-result_reshaped = np.reshape(result,(2**number_of_qubits))
+result_reshaped = np.reshape(np.asarray(result), (2**number_of_qubits,))
 
 global_phase=1
 
