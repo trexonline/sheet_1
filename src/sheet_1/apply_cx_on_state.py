@@ -43,8 +43,7 @@ def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting
     number_of_qubits=state.ndim
     acting_on1=number_of_qubits-1-acting_on1
     acting_on2=number_of_qubits-1-acting_on2
-    cx_gate = CXGate()        # Instanz erzeugen
-    cx_matrix = cx_gate.to_matrix()  # ruft die Matrix auf
+    cx_matrix=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]])
     cx = np.reshape(cx_matrix,(2,2,2,2))
     old_indices = [i for i in range(number_of_qubits)]
     new_indices = old_indices.copy()
