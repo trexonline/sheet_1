@@ -13,11 +13,7 @@ def simulate_mock(qc, parameters):
 
 def simulate(qc, parameters):
     for instr, qargs, cargs in qc.data:
-        print("Gate:", instr.name)
         qubit_indices = [qc.find_bit(q).index for q in qargs]
-        print("Qubits:",qubit_indices)
-        print("Params:", instr.params)
-        print()
 
         #if instr.name == 'cx':
             
@@ -40,7 +36,6 @@ for gate in qc.data:
 def apply_u_on_state(state: np.ndarray, u: np.ndarray, acting_on: int) -> None:
     number_of_qubits=state.ndim
     acting_on=number_of_qubits-acting_on-1
-    print(acting_on)
     old_indices = [i for i in range(number_of_qubits)]
     new_indices = old_indices.copy()
     new_indices[acting_on] = 51

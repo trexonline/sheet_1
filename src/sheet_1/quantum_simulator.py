@@ -15,11 +15,6 @@ def simulate(qc, parameters):
 
     for instr, qargs, cargs in qc.data:
         qubit_indices = [qc.find_bit(q).index for q in qargs]
-        '''
-        print("Gate:", instr.name)
-        print("Qubits:",qubit_indices)
-        print("Params:", instr.params)
-        print()'''
 
         if instr.name == 'cx':
             cx=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]])
@@ -53,8 +48,7 @@ parameters= {
 
 
 result = simulate(transpiled_qc, parameters)
-
-print(result)'''
+'''
 
 
 

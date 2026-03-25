@@ -13,11 +13,7 @@ def simulate_mock(qc, parameters):
 
 def simulate(qc, parameters):
     for instr, qargs, cargs in qc.data:
-        print("Gate:", instr.name)
         qubit_indices = [qc.find_bit(q).index for q in qargs]
-        print("Qubits:",qubit_indices)
-        print("Params:", instr.params)
-        print()
 
         #if instr.name == 'cx':
 
@@ -54,4 +50,3 @@ def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting
 
 
 #result=apply_cx_on_state(psi_converted, cx, 2, 0) 
-#print(np.reshape(result,(2**n)))
