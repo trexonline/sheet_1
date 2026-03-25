@@ -41,6 +41,9 @@ for gate in qc.data:
 
 def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting_on2: int) -> None:
     number_of_qubits=state.ndim
+    cx_gate = CXGate()        # Instanz erzeugen
+    cx_matrix = cx_gate.to_matrix()  # ruft die Matrix auf
+    cx = np.reshape(cx_matrix,(2,2,2,2))
     old_indices = [i for i in range(number_of_qubits)]
     new_indices = old_indices.copy()
     new_indices[acting_on1] = 51
@@ -49,11 +52,7 @@ def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting
     return result
 
 
-cx_gate = CXGate()        # Instanz erzeugen
-cx_matrix = cx_gate.to_matrix()  # ruft die Matrix auf
 
-
-cx = np.reshape(cx_matrix,(2,2,2,2))
 
 
 #result=apply_cx_on_state(psi_converted, cx, 2, 0) 
