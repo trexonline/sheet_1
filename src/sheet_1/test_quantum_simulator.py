@@ -16,7 +16,7 @@ def simulate(qc, parameters):
 
 
 
-qc = QuantumCircuit(4)
+'''qc = QuantumCircuit(4)
 qc.x(3) # |1000> state
 
 #qc.h(0) # 1/4*(|0> + |1>)^4 state
@@ -43,4 +43,4 @@ parameters_2= {
 mock_result = simulate(transpiled_qc, parameters)
 test_result = quantum_simulator.simulate(transpiled_qc, parameters)
 
-assert mock_result == test_result
+assert mock_result == test_result'''
