@@ -3,3 +3,4 @@ __pycache__/
 .venv/
 uv.lock
 docs/build
+sheet_1/docs/source/_autosummary
