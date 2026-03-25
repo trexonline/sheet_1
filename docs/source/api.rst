@@ -5,4 +5,6 @@ API Reference
 .. autosummary::
     :toctree: _autosummary/
 
-    hello
+    simulate
+    apply_u_on_state
+    apply_cx_on_state
