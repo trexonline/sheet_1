@@ -41,6 +41,8 @@ for gate in qc.data:
 
 def apply_cx_on_state(state: np.ndarray, cx: np.ndarray, acting_on1: int, acting_on2: int) -> None:
     number_of_qubits=state.ndim
+    acting_on1=number_of_qubits-1-acting_on1
+    acting_on2=number_of_qubits-1-acting_on2
     cx_gate = CXGate()        # Instanz erzeugen
     cx_matrix = cx_gate.to_matrix()  # ruft die Matrix auf
     cx = np.reshape(cx_matrix,(2,2,2,2))
