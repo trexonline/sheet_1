@@ -5,6 +5,6 @@ API Reference
 .. autosummary::
     :toctree: _autosummary/
 
-    quantum_simulator
+    simulate
     apply_u_on_state
     apply_cx_on_state
