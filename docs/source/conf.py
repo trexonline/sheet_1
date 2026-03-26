@@ -16,7 +16,9 @@ release = '28.03.2026'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autosummary', 'nbsphinx']
+extensions = ['sphinx.ext.autosummary', 'nbsphinx', 'myst_nb']
+
+nb_execution_mode = 'off'
 
 templates_path = ['_templates']
 exclude_patterns = []
