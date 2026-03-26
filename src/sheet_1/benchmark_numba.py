@@ -2,8 +2,10 @@ from qiskit import QuantumCircuit, transpile
 from qiskit.quantum_info import Statevector
 from qiskit.circuit.random import random_circuit
 from sheet_1 import simulator_numba
+from sheet_1 import quantum_simulator
 from qiskit_aer import AerSimulator
 
+import numba
 import numpy as np
 import pytest
 
@@ -60,10 +62,21 @@ def test_aer_simulation(benchmark, circuit):
 
 
 
-def test_own_simulation(benchmark, circuit):
+@numba.njit(cache=True)
+def test_numba_simulation(benchmark, circuit):
     """Benchmark your custom simulator"""
     def run():
         return simulator_numba.simulate_numba(circuit, None)
+
+    result = benchmark(run)
+
+    assert result is not None
+
+
+def test_einsum_simulation(benchmark, circuit):
+    """Benchmark your custom simulator"""
+    def run():
+        return quantum_simulator.simulate(circuit, None)
 
     result = benchmark(run)
 
@@ -80,10 +93,10 @@ def test_correctness(construction_function):
     qc = transpile(qc, basis_gates=['u', 'cx'])
 
     aer_state = Statevector.from_instruction(qc)
-    own_state = simulator_numba.simulate_numba(qc, None)
+    numba_state = simulator_numba.simulate_numba(qc, None)
 
     # compare states up to global phase
     idx = np.argmax(np.abs(aer_state))
-    global_phase = aer_state.data[idx] / own_state[idx]
+    global_phase = aer_state.data[idx] / numba_state[idx]
 
-    assert np.allclose(aer_state, own_state * global_phase)
+    assert np.allclose(aer_state, numba_state * global_phase)
