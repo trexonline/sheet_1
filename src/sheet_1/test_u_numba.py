@@ -3,36 +3,33 @@ from qiskit.circuit.library import QFTGate, UGate, CXGate
 from qiskit_aer import AerSimulator
 from qiskit.quantum_info import Statevector
 import numpy as np
-import numba
+from qiskit.circuit.random import random_circuit
 from sheet_1.apply_u_numba import apply_u_numba
-
 
 theta = np.pi/3
 phi=np.pi/8
 lam=0
+apply_to=4
+number_of_qubits=9
 
-# initialize state
-number_of_qubits=5
-qc = QuantumCircuit(number_of_qubits)
-qc.x(0)
-'''
-qc.h(0)
-qc.h(1)
-qc.h(2)
-qc.h(3)
-qc.append(QFTGate(4), [0, 1, 2, 3])'''
-
-initial_state = Statevector.from_instruction(qc)
+qc = random_circuit(num_qubits=number_of_qubits, depth=10, measure=False, seed=42)
+tqc = transpile(qc, basis_gates=['u', 'cx'])
+initial_state = Statevector.from_instruction(tqc)
 
 # simulate result using AerSimulator
 qc2 = QuantumCircuit(number_of_qubits)
-qc2.u(theta,phi,lam,2)
+qc2.u(theta,phi,lam,apply_to)
 Aer_result = initial_state.evolve(qc2)
 
 # set up cx gate
 u=UGate(theta,phi,lam).to_matrix()
 
-result = apply_u_numba(initial_state, u, 2)
+result = apply_u_numba(initial_state.data, u, apply_to)
+
+#print(Aer_result.data)
+#print()
+#print(result)
+
 
 global_phase=1
 
