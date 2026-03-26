@@ -17,5 +17,5 @@ documentation for details.
 
    installation.rst
    api.rst
-   documentation_simulate.ipynb
+   documentation_simulate
 
