@@ -1,36 +1,31 @@
 from qiskit import QuantumCircuit, transpile
-from qiskit.circuit.library import QFTGate, UGate, CXGate
-from qiskit_aer import AerSimulator
+from qiskit.circuit.library import UGate
 from sheet_1.apply_cx_numba import apply_cx_numba
 from sheet_1.apply_u_numba import apply_u_numba
 import numpy as np
-import numba
-from qiskit.quantum_info import Statevector
 
 #change apply_cx_on_state to numba version
 
-@numba.njit(cache=True)
 def simulate_numba(qc: QuantumCircuit, parameters: dict | None = None) -> np.ndarray:
     """Simulates the given quantum circuit and returns the final state vector."""
-    number_of_qubits=qc.num_qubits
-    psi=np.zeros(2**number_of_qubits)
-    psi[0]=1
-    psi_converted = np.reshape(psi,[2]*number_of_qubits)
+    number_of_qubits = qc.num_qubits
+    psi = np.zeros(2**number_of_qubits, dtype=np.complex128)
+    psi[0] = 1.0 + 0.0j
 
-    for instr, qargs, cargs in qc.data:
+    for circuit_instruction in qc.data:
+        instr = circuit_instruction.operation
+        qargs = circuit_instruction.qubits
         qubit_indices = [qc.find_bit(q).index for q in qargs]
 
         if instr.name == 'cx':
-            cx=np.array([[1,0,0,0],[0,1,0,0],[0,0,0,1],[0,0,1,0]])
-            psi_converted=apply_cx_numba(psi_converted,cx,qubit_indices[0], qubit_indices[1])
+            psi = apply_cx_numba(psi, qubit_indices[0], qubit_indices[1])
         elif instr.name == 'u':
-            u=UGate(instr.params[0],instr.params[1],instr.params[2]).to_matrix()
-            psi_converted=apply_u_numba(psi_converted,u,qubit_indices[0])
+            u = UGate(instr.params[0], instr.params[1], instr.params[2]).to_matrix()
+            psi = apply_u_numba(psi, np.asarray(u), qubit_indices[0])
         else:
             continue
     
-    psi_final = np.reshape(np.asarray(psi_converted), (2**number_of_qubits,))
-    return psi_final
+    return psi
 
             
 

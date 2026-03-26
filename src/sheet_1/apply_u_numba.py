@@ -1,7 +1,7 @@
 import numba 
 import numpy as np
 
-@numba.jit(cache=True)
+@numba.njit(cache=True)
 def apply_u_numba(state: np.ndarray, u: np.ndarray, acting_on: int) -> np.ndarray:
     number_of_qubits=int(np.log2(state.size))
     for idx_lower in range(0, 2**acting_on):
