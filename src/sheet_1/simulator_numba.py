@@ -7,6 +7,7 @@ import numpy as np
 import numba
 from qiskit.quantum_info import Statevector
 
+#change apply_cx_on_state to numba version
 
 @numba.jit(cache=True)
 def simulate_numba(qc: QuantumCircuit, parameters: dict | None = None) -> np.ndarray:
