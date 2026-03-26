@@ -11,13 +11,12 @@ qc.measure_all()
 
 sampler = StatevectorSampler()
 result = sampler.run([qc], shots=1024).result()
-meas_data = getattr(result[0].data, "meas")
-print(meas_data.get_counts())
+print(result[0].data.meas.get_counts())
 
 qc.draw("mpl")
 
 
-counts = meas_data.get_counts()
+counts = result[0].data.meas.get_counts()
 plot_histogram(counts)
 
 plt.show()
