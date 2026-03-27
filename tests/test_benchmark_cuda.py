@@ -48,7 +48,7 @@ def circuit(request):
 def test_aer_simulation(benchmark, circuit):
     """Benchmark Qiskit Aer statevector simulation"""
     circuit.save_statevector()
-    simulator = AerSimulator(method="statevector")
+    simulator = AerSimulator(method="statevector", fusion_enable=False, max_parallel_threads=1)
     compiled = transpile(circuit, simulator)
 
     def run():
