@@ -5,7 +5,6 @@ from sheet_1 import simulator_numba
 from sheet_1 import quantum_simulator
 from qiskit_aer import AerSimulator
 
-import numba
 import numpy as np
 import pytest
 
@@ -62,7 +61,6 @@ def test_aer_simulation(benchmark, circuit):
 
 
 
-@numba.njit(cache=True)
 def test_numba_simulation(benchmark, circuit):
     """Benchmark your custom simulator"""
     def run():
