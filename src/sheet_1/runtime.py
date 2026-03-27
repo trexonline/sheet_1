@@ -57,6 +57,7 @@ plt.ylabel('Runtime (seconds)')
 plt.title('Runtime Comparison on Random Circuit (24 qubits, depth 20)')
 plt.grid(axis='y', linestyle='--', alpha=0.35)
 plt.tight_layout()
+plt.savefig('runtime_comparison.png')
 plt.show()
 
 print('Average runtime over 3 runs (seconds):')
