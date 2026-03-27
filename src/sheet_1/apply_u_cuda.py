@@ -30,17 +30,10 @@ def _apply_u_kernel(state, u, acting_on, number_of_qubits, size):
 
 
 def apply_u_cuda(state: np.ndarray, u: np.ndarray, acting_on: int, threads_per_block: int = 256) -> np.ndarray:
-    """Apply a single-qubit U gate to a statevector on the GPU using Numba CUDA.
+    '''Applies a U gate using Cuda to the given state vector and it acts on the qubit specified by acting_on. 
+    u ist the matrix reprensentation of the U gate in form of a np.array. threads_per_block specifies the number 
+    of threads per block for the CUDA kernel.'''
 
-    Args:
-        state: Statevector with shape (2**n,) and complex dtype.
-        u: 2x2 unitary matrix.
-        acting_on: Qubit index in little-endian convention.
-        threads_per_block: CUDA threads per block.
-
-    Returns:
-        Updated statevector copied back to host memory.
-    """
     if not cuda.is_available():
         raise RuntimeError("CUDA is not available. Install CUDA toolkit/driver and use a CUDA-enabled GPU.")
 

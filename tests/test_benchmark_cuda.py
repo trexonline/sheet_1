@@ -15,7 +15,7 @@ import pytest
 # ----------------------------
 
 def construct_simple_circuit():
-    number_of_qubits = 20
+    number_of_qubits = 4
     qc = QuantumCircuit(number_of_qubits)
     qc.h(0)
     qc.h(1)

@@ -31,17 +31,8 @@ def _apply_cx_kernel(state, control, target, number_of_qubits, size):
 
 
 def apply_cx_cuda(state: np.ndarray, control: int, target: int, threads_per_block: int = 256) -> np.ndarray:
-    """Apply a CX gate to a statevector on the GPU using Numba CUDA.
-
-    Args:
-        state: Statevector with shape (2**n,) and complex dtype.
-        control: Control qubit index in little-endian convention.
-        target: Target qubit index in little-endian convention.
-        threads_per_block: CUDA threads per block.
-
-    Returns:
-        Updated statevector copied back to host memory.
-    """
+    '''Applies a CNOT gate using Cuda to the given state vector and it acts on the qubits target and control. 
+    threads_per_block specifies the number of threads per block for the CUDA kernel.'''
     if not cuda.is_available():
         raise RuntimeError("CUDA is not available. Install CUDA toolkit/driver and use a CUDA-enabled GPU.")
 

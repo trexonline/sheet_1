@@ -1,22 +1,32 @@
-.. Quantenschaltung documentation master file, created by
-   sphinx-quickstart on Wed Mar 25 14:48:01 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Quantenschaltung documentation
+Quantenschaltung Documentation
 ==============================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Build, test, and explore quantum circuit simulations with CPU, Numba, and CUDA backends.
 
+This documentation is organized to help you move quickly from setup to implementation details.
+
+Start Here
+----------
+
+1. :doc:`Installation <installation>`
+2. :doc:`Tutorial <tutorial>`
+3. :doc:`Notebook Walkthrough <notebook>`
+4. :doc:`API Reference <api>`
+
+Documentation Guide
+-------------------
+
+- **Installation**: environment setup with and project dependencies.
+- **Tutorial**: practical examples to understand the simulation workflow.
+- **Notebook**: Jupyter notebook containing code.
+- **API Reference**: descriptions of the package's functions.
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
+   :caption: Contents
 
-   installation.rst
-   api.rst
-   tutorial.rst
-   notebook.rst
+   installation
+   tutorial
+   notebook
+   api
 

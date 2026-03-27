@@ -7,7 +7,9 @@ import numpy as np
 #change apply_cx_on_state to numba version
 
 def simulate_numba(qc: QuantumCircuit, parameters: dict | None = None) -> np.ndarray:
-    """Simulates the given quantum circuit and returns the final state vector."""
+    """Simulates a transpiled quantum circuit using Numba and returns the final state vector.
+    The circuit is expected to contain only 'cx' and 'u' gates.
+    """
     number_of_qubits = qc.num_qubits
     psi = np.zeros(2**number_of_qubits, dtype=np.complex128)
     psi[0] = 1.0 + 0.0j

@@ -7,9 +7,8 @@ from sheet_1.apply_u_cuda import apply_u_cuda
 
 
 def simulate_cuda(qc: QuantumCircuit, parameters: dict | None = None) -> np.ndarray:
-    """Simulates a transpiled quantum circuit using CUDA gate kernels.
-
-    The circuit is expected to contain basis gates "u" and "cx".
+    """Simulates a transpiled quantum circuit using CUDA gate kernels and returns the final state vector.
+    The circuit is expected to contain only 'cx' and 'u' gates.
     """
     number_of_qubits = qc.num_qubits
     psi = np.zeros(2**number_of_qubits, dtype=np.complex128)

@@ -3,6 +3,8 @@ import numpy as np
 
 @numba.njit(cache=True)
 def apply_cx_numba(state: np.ndarray, control: int, target: int) -> np.ndarray:
+    '''Applies a CNOT gate using Numba to the given state vector and acts on the qubits specified by control
+    and target.'''
     if control == target:
         return state.copy()
 

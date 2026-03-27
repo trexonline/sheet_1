@@ -9,7 +9,8 @@ from qiskit.quantum_info import Statevector
 
 
 def simulate(qc: QuantumCircuit, parameters: dict | None = None) -> np.ndarray:
-    """Simulates the given quantum circuit and returns the final state vector."""
+    """Simulates a transpiled quantum circuit using np.einsum() and returns the final state vector.
+    The circuit is expected to contain only 'cx' and 'u' gates."""
     number_of_qubits=qc.num_qubits
     psi=np.zeros(2**number_of_qubits)
     psi[0]=1

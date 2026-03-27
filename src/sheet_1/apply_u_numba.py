@@ -3,6 +3,8 @@ import numpy as np
 
 @numba.njit(cache=True)
 def apply_u_numba(state: np.ndarray, u: np.ndarray, acting_on: int) -> np.ndarray:
+    '''Applies a U gate using Numba to the given state vector and it acts on the qubit specified by acting_on. 
+    u ist the matrix reprensentation of the U gate in form of a np.array.'''
     number_of_qubits=int(np.log2(state.size))
     for idx_lower in range(0, 2**acting_on):
         for idx_upper in range(0, 2**number_of_qubits, 2**(acting_on+1)):
