@@ -1,6 +1,12 @@
 ﻿sheet\_1.apply\_cx\_numba
 =========================
 
-.. currentmodule:: sheet_1
+.. automodule:: sheet_1.apply_cx_numba
 
-.. autofunction:: apply_cx_numba
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      apply_cx_numba
+   

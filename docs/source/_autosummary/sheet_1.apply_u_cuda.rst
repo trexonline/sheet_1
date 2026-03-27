@@ -1,6 +1,12 @@
 ﻿sheet\_1.apply\_u\_cuda
 =======================
 
-.. currentmodule:: sheet_1
+.. automodule:: sheet_1.apply_u_cuda
 
-.. autofunction:: apply_u_cuda
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      apply_u_cuda
+   

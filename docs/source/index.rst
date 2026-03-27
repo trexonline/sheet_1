@@ -17,5 +17,6 @@ documentation for details.
 
    installation.rst
    api.rst
+   tutorial.rst
    notebook.rst
 
