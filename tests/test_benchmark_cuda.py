@@ -25,7 +25,7 @@ def construct_simple_circuit():
 
 def construct_random_circuit():
     # fixed seed for reproducibility
-    return random_circuit(num_qubits=20, depth=20, measure=False, seed=42)
+    return random_circuit(num_qubits=24, depth=20, measure=False, seed=42)
 
 
 # ----------------------------
