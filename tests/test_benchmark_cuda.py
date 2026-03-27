@@ -15,7 +15,7 @@ import pytest
 # ----------------------------
 
 def construct_simple_circuit():
-    number_of_qubits = 3
+    number_of_qubits = 20
     qc = QuantumCircuit(number_of_qubits)
     qc.h(0)
     qc.h(1)
@@ -25,14 +25,14 @@ def construct_simple_circuit():
 
 def construct_random_circuit():
     # fixed seed for reproducibility
-    return random_circuit(num_qubits=12, depth=10, measure=False, seed=42)
+    return random_circuit(num_qubits=20, depth=20, measure=False, seed=42)
 
 
 # ----------------------------
 # Shared parametrization
 # ----------------------------
 
-@pytest.fixture(params=[construct_simple_circuit, construct_random_circuit])
+@pytest.fixture(params=[construct_random_circuit])
 def circuit(request):
     qc = request.param()
     qc = transpile(qc, basis_gates=['u', 'cx'])
