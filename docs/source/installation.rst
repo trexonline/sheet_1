@@ -1,11 +1,28 @@
 Installation
 ============
 
+To install this package you need to clone the repository using
 
-To install this, you should first install uv. 
-Then you use git clone to clone the repository. 
-You should use the ssh key to gain access. 
-Use uv sync to great a venv, 
-this is necessarry do to the venv beeing in gitignore and not beeing cloned.
-Install the packages numpy as np and qiskit.
+.. code-block:: bash
+
+    git clone git@github.com:trexonline/sheet_1.git
+
+To set up a virtual environment inside the repository install uv
+
+.. code-block:: bash
+
+    pip install uv
+
+and create it with
+
+.. code-block:: bash
+
+    uv sync
+
+This package uses numpy and qiskit which can be installed via the following command lines:
+
+.. code-block:: bash
+
+    uv add numpy
+    uv add qiskit
 
